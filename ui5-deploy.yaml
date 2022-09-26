@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.5"
+metadata:
+  name: desafiopreco
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://lnl-s4h.opustech.com.br:8000
+          client: "200"
+        app:
+          name: ZBSP_TCS_PRECO
+          description: Desafio
+          package: ZTCS
+          transport: S4HK901619

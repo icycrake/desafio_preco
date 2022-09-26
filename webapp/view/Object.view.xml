@@ -1,0 +1,63 @@
+<mvc:View
+    controllerName="desafiopreco.controller.Object"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false"
+        busy="{objectView>/busy}"
+        busyIndicatorDelay="{objectView>/delay}">
+
+        <semantic:titleHeading>
+            <Title
+                text="{Desc_prod}"
+                level="H2"/>
+        </semantic:titleHeading>
+
+        <semantic:headerContent>
+            <Title
+                text="{Material}"
+                level="H3"/>
+        </semantic:headerContent>
+
+        <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+		<f:SimpleForm id="Detalhes"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Preço Atual" />
+				<Text id="nameText" text="{Preco_atual}" />
+				<Label text="Preço Novo" />
+				<Text text="{Street} {Preco_novo}" />
+				<Label text="Status" />
+				<Text text="{Status}" />
+				<Label text="Data / Hora" />
+				<Text text="{DataHoraSolicitacao}" />
+			</f:content>
+		</f:SimpleForm>
+
+    </semantic:SemanticPage>
+
+</mvc:View>

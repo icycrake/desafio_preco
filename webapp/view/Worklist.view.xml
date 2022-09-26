@@ -1,0 +1,123 @@
+<mvc:View
+    controllerName="desafiopreco.controller.Worklist"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:semantic="sap.f.semantic">
+
+    <semantic:SemanticPage
+        id="page"
+        headerPinnable="false"
+        toggleHeaderOnTitleClick="false">
+
+        <semantic:titleHeading>
+            <Title
+                text="{i18n>worklistTitle}"
+                level="H2"/>
+                
+        </semantic:titleHeading>
+
+        <semantic:content>
+            <Table
+                id="table"
+                width="auto"
+                mode="MultiSelect"
+                items="{
+                    path: '/SolicitacaoSet',
+                    sorter: {
+                        path: 'Descricao',
+                        descending: false
+                    }
+                }"
+                noDataText="{worklistView>/tableNoDataText}"
+                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+                growing="true"
+                growingScrollToLoad="true"
+                updateFinished=".onUpdateFinished">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title
+                            id="tableHeader"
+                            text="{worklistView>/worklistTableTitle}"
+                            level="H3"/>
+                        <ToolbarSpacer />
+                        
+                            <Button type="Accept" text="Aprovar" press=".onAceita" />
+                            <Button type="Reject" text="Rejeitar" press=".onRejeita" />
+
+                        <SearchField
+                            id="searchField"
+                            tooltip="{i18n>worklistSearchTooltip}"
+                            search=".onSearch">
+                            <layoutData>
+                                <OverflowToolbarLayoutData
+                                    maxWidth="200px"
+                                    priority="NeverOverflow"/>
+                            </layoutData>
+                        </SearchField>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column id="nameColumn">
+                        <Text text="Material"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Descrição"/>
+                    </Column>
+
+                    <Column id="unitNumberColumn" hAlign="End">
+                        <Text text="Preço Atual"/>
+                    </Column>
+                    
+                    <Column>
+                        <Text text="Preço Novo"/>
+                    </Column>
+
+                    <Column>
+                        <Text text="Status"/>
+                    </Column>
+
+                     <Column>
+                        <Text text="DATA/HORA"/>
+                    </Column>
+
+                </columns>
+
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press=".onPress">
+                        <cells>
+                            <ObjectIdentifier
+                                title="{Material}"/>
+                            <ObjectIdentifier
+                                title="{Desc_prod}"/>
+                            <ObjectNumber
+                                number="{
+                                    path: 'Preco_atual',
+                                    formatter: '.formatter.numberUnit'
+                                }" />
+                            <ObjectNumber
+                                number="{
+                                    path: 'Preco_novo',
+                                    formatter: '.formatter.numberUnit'
+                                }" />
+                             <ObjectIdentifier
+                                title="{Status}"/>
+                            <ObjectIdentifier 
+                            title="{DataHoraSolicitacao}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </semantic:content>
+
+                <semantic:sendEmailAction>
+            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+        </semantic:sendEmailAction>
+
+    </semantic:SemanticPage>
+
+</mvc:View>
