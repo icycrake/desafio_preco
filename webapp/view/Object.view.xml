@@ -32,7 +32,7 @@
 		<f:SimpleForm id="Detalhes"
 			editable="false"
 			layout="ResponsiveGridLayout"
-			title="Address"
+			title="Detalhes Item"
 			labelSpanXL="3"
 			labelSpanL="3"
 			labelSpanM="3"
