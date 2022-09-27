@@ -236,8 +236,8 @@ sap.ui.define([
                     method: "POST",
                     urlParameters: {
                             Status         : Status,
-                            IdSolicitacao  : idSolicitacao,
-                            Preco_Novo     : preco_novo
+                            IDSolicitacao  : idSolicitacao,
+                            Preco_novo     : preco_novo
                     },
     
                     sucess: function(oData, response){

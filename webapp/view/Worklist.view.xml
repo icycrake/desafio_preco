@@ -1,7 +1,8 @@
 <mvc:View
     controllerName="desafiopreco.controller.Worklist"
     xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:m="sap.m" 
     xmlns:semantic="sap.f.semantic">
 
     <semantic:SemanticPage
@@ -24,8 +25,7 @@
                 items="{
                     path: '/SolicitacaoSet',
                     sorter: {
-                        path: 'Descricao',
-                        descending: false
+                        path: 'Material'
                     }
                 }"
                 noDataText="{worklistView>/tableNoDataText}"
@@ -45,6 +45,8 @@
                             <Button type="Accept" text="Aprovar" press=".onAceita" />
                             <Button type="Reject" text="Rejeitar" press=".onRejeita" />
 
+
+
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
@@ -59,6 +61,10 @@
                 </headerToolbar>
 
                 <columns>
+                    <Column>
+                        <Text text="Id Solicitação"/>
+                    </Column>
+
                     <Column id="nameColumn">
                         <Text text="Material"/>
                     </Column>
@@ -90,6 +96,8 @@
                         type="Navigation"
                         press=".onPress">
                         <cells>
+                            <ObjectIdentifier
+                                title="{IDSolicitacao}"/>                        
                             <ObjectIdentifier
                                 title="{Material}"/>
                             <ObjectIdentifier
